@@ -15,6 +15,11 @@
             <artifactId>javafx-controls</artifactId>
             <version>14</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>14</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -27,7 +32,7 @@
                         <!-- Default configuration for running -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.ititi.App</mainClass>
+                            <mainClass>com.ititi.test.App</mainClass>
                         </configuration>
                     </execution>
                     <execution>
@@ -37,7 +42,7 @@
                             <options>
                                 <option>-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:9546</option>
                             </options>
-                            <mainClass>com.ititi.App</mainClass>
+                            <mainClass>com.ititi.test.App</mainClass>
                         </configuration>
                     </execution>
                 </executions>
