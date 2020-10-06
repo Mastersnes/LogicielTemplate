@@ -32,7 +32,7 @@
                         <!-- Default configuration for running -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.ititi.test.App</mainClass>
+                            <mainClass>com.ititi.template.App</mainClass>
                         </configuration>
                     </execution>
                     <execution>
@@ -42,7 +42,7 @@
                             <options>
                                 <option>-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:9546</option>
                             </options>
-                            <mainClass>com.ititi.test.App</mainClass>
+                            <mainClass>com.ititi.template.App</mainClass>
                         </configuration>
                     </execution>
                 </executions>
