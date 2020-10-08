@@ -1,16 +1,14 @@
 package com.ititi.template;
 
 import com.ititi.template.models.Personne;
-import com.ititi.template.utils.Utils;
+import com.ititi.template.utils.LoaderUtils;
 import com.ititi.template.views.PersonsViewController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import jdk.jshell.execution.Util;
 
 import java.util.logging.Logger;
 
@@ -19,6 +17,7 @@ import java.util.logging.Logger;
  */
 public class App extends Application {
     protected Logger logger = Logger.getLogger(getClass().getName());
+    protected Stage primaryStage;
     protected ObservableList<Personne> datas = FXCollections.observableArrayList();
 
     public App() {
@@ -38,20 +37,19 @@ public class App extends Application {
         primaryStage.setTitle("Carnet d'adresse");
         primaryStage.setResizable(false);
 
-        final BorderPane rootPane = Utils.load("com/ititi/template/views/RootView.fxml").getRoot();
+        final BorderPane rootPane = LoaderUtils.load("com/ititi/template/views/RootView.fxml").getRoot();
         final Scene scene = new Scene(rootPane);
         primaryStage.setScene(scene);
 
-        final PersonsViewController controller = PersonsViewController.create();
+        final PersonsViewController controller = PersonsViewController.create(this);
         rootPane.setCenter(controller.getRoot());
-        controller.bind(this);
-
         primaryStage.show();
     }
 
     public ObservableList<Personne> getDatas() {
         return datas;
     }
+    public Stage getPrimaryStage() {return primaryStage;}
 
     public static void main(String[] args) {
         launch();

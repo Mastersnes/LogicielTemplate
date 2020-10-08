@@ -35,7 +35,7 @@
                     <buttons>
                       <Button mnemonicParsing="false" text="Ajouter" />
                         <Button mnemonicParsing="false" text="Modifier" />
-                        <Button mnemonicParsing="false" text="Supprimer" />
+                        <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteAction" text="Supprimer" />
                     </buttons>
                   </ButtonBar>
                   <GridPane layoutX="65.0" layoutY="35.0" prefHeight="199.0" prefWidth="417.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="35.0">
