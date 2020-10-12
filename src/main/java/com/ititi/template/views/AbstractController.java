@@ -1,39 +1,35 @@
 package com.ititi.template.views;
 
-import com.ititi.template.App;
-import com.ititi.template.models.Personne;
-import com.ititi.template.utils.DateUtils;
 import com.ititi.template.utils.LoaderUtils;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
-import java.util.logging.Logger;
+import java.util.List;
 
 /**
  * Controller abstrait
  */
-public class AbstractController<ROOT extends Pane> {
-    protected Logger logger = Logger.getLogger(getClass().getName());
-    protected App mainApp;
+public abstract class AbstractController<ROOT extends Pane> {
+    protected Stage stage;
     protected ROOT root;
 
-    public static <CONTROLLER extends AbstractController> CONTROLLER create(final String path, final App mainApp) {
-        final FXMLLoader loader = LoaderUtils.load(path);
-        final CONTROLLER controller = loader.getController();
-        controller.mainApp = mainApp;
-        controller.root = loader.getRoot();
-        return controller;
+    public static <CONTROLLER extends AbstractController> CONTROLLER create(final String path, final Stage stage, final String... csss) {
+        final FXMLLoader loader = LoaderUtils.load(path, csss);
+        if (loader != null) {
+            final CONTROLLER controller = loader.getController();
+            controller.stage = stage;
+            controller.root = loader.getRoot();
+            controller.afterCreate();
+            return controller;
+        }else return null;
     }
 
-    public void ini
+    protected abstract void initialize();
+    protected abstract void afterCreate();
 
     public ROOT getRoot() {
         return root;
     }
-    public App getMainApp() {
-        return mainApp;
-    }
+    public Stage getStage() {return stage;}
 }

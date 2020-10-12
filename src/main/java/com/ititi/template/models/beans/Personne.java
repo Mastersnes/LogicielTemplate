@@ -1,4 +1,4 @@
-package com.ititi.template.models;
+package com.ititi.template.models.beans;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -11,6 +11,8 @@ import java.time.LocalDate;
  * Represente une personne
  */
 public class Personne {
+    private Integer id;
+
     private StringProperty nom;
     private StringProperty prenom;
     private StringProperty adresse;
@@ -34,27 +36,30 @@ public class Personne {
         return personne;
     }
 
-    public void setNom(String nom) {this.nom.set(nom);}
+    public Integer getId() {return id;}
+    public void setId(final Integer id) {this.id = id;}
+
     public String getNom() {return nom.get();}
+    public void setNom(String nom) {this.nom.set(nom);}
     public StringProperty nomProperty() {return nom;}
 
-    public void setPrenom(String prenom) {this.prenom.set(prenom);}
     public String getPrenom() {return prenom.get();}
+    public void setPrenom(String prenom) {this.prenom.set(prenom);}
     public StringProperty prenomProperty() {return prenom;}
 
-    public void setAdresse(String adresse) {this.adresse.set(adresse);}
     public String getAdresse() {return adresse.get(); }
+    public void setAdresse(String adresse) {this.adresse.set(adresse);}
     public StringProperty adresseProperty() {return adresse;}
 
-    public void setVille(String ville) {this.ville.set(ville);}
     public String getVille() {return ville.get();}
+    public void setVille(String ville) {this.ville.set(ville);}
     public StringProperty villeProperty() {return ville;}
 
-    public void setCodePostal(String codePostal) {this.codePostal.set(codePostal);}
     public String getCodePostal() {return codePostal.get();}
+    public void setCodePostal(String codePostal) {this.codePostal.set(codePostal);}
     public StringProperty codePostalProperty() {return codePostal;}
 
-    public void setDateNaissance(LocalDate dateNaissance) {this.dateNaissance.set(dateNaissance);}
     public LocalDate getDateNaissance() {return dateNaissance.get();}
+    public void setDateNaissance(LocalDate dateNaissance) {this.dateNaissance.set(dateNaissance);}
     public ObjectProperty<LocalDate> dateNaissanceProperty() {return dateNaissance;}
 }
