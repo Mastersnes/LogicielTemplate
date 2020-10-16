@@ -15,7 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Represente une personne
+ * DAO de communication avec la BDD SqlLite
  */
 public class Bdd {
     protected static Bdd instance;

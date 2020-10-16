@@ -3,6 +3,7 @@ package com.ititi.template.models.dto;
 import com.ititi.template.models.beans.Personne;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "Personne")
+@XmlRootElement(name = "Personne")
 public class PersonneDto {
     @Id
     @Column(name="ID", unique = true, nullable = false)
