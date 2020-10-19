@@ -18,6 +18,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -41,30 +42,32 @@ public class Fdd {
         return instance;
     }
 
-    public File loadLastFile() {loadFromFile(PreferencesUtils.loadLastFile());}
-    public File loadFromFile(final File file) {
-        if (file == null) return loadLastFile();
-        try {
-            final JAXBContext context = JAXBContext.newInstance(PersonnesDto.class);
-            final Unmarshaller um = context.createUnmarshaller();
+    public List<Personne> loadLastFile() {return loadFromFile(PreferencesUtils.loadLastFile());}
+    public List<Personne> loadFromFile(final File file) {
+        currentFile = null;
+        if (file != null) {
+            try {
+                final JAXBContext context = JAXBContext.newInstance(PersonnesDto.class);
+                final Unmarshaller um = context.createUnmarshaller();
 
-            final PersonnesDto personnes = (PersonnesDto) um.unmarshal(file);
+                final PersonnesDto personnes = (PersonnesDto) um.unmarshal(file);
 
-            PreferencesUtils.saveLastFile(file);
-            currentFile = file;
-        } catch (final JAXBException e) {
-            final Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setContentText("Impossible de charger le fichier: " + file.getPath());
-            alert.showAndWait();
+                PreferencesUtils.saveLastFile(file);
+                currentFile = file;
+                if (personnes != null) return personnes.getPersonnes();
+            } catch (final JAXBException e) {
+                final Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setContentText("Impossible de charger le fichier: " + file.getPath());
+                alert.showAndWait();
+            }
         }
+        return new ArrayList<>();
     }
 
-    public void saveToFile(final File file) {
-        if (file == null){
-            if (currentFile != null) saveToFile(currentFile);
-            return;
-        }
+    public void saveCurrentFile(final List<Personne> datas) {saveToFile(currentFile, datas);}
+    public void saveToFile(final File file, final List<Personne> datas) {
+        if (file == null) return;
         try {
             final JAXBContext context = JAXBContext.newInstance(PersonnesDto.class);
             final Marshaller m = context.createMarshaller();
@@ -82,4 +85,11 @@ public class Fdd {
         }
     }
 
+    public String getCurrentFileName() {
+        if (currentFile != null) return currentFile.getPath();
+        else return StringUtils.EMPTY;
+    }
+    public void setCurrentFile(final File currentFile) {
+        this.currentFile = currentFile;
+    }
 }
