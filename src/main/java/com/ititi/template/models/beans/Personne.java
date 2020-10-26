@@ -1,10 +1,12 @@
 package com.ititi.template.models.beans;
 
+import com.ititi.template.utils.LocalDateAdapter;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 
 /**
@@ -59,6 +61,7 @@ public class Personne {
     public void setCodePostal(String codePostal) {this.codePostal.set(codePostal);}
     public StringProperty codePostalProperty() {return codePostal;}
 
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     public LocalDate getDateNaissance() {return dateNaissance.get();}
     public void setDateNaissance(LocalDate dateNaissance) {this.dateNaissance.set(dateNaissance);}
     public ObjectProperty<LocalDate> dateNaissanceProperty() {return dateNaissance;}

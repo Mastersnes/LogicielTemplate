@@ -5,18 +5,17 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="750.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="750.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ititi.template.views.RootController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="Fichier">
             <items>
-              <MenuItem mnemonicParsing="false" text="Nouveau" />
-                  <MenuItem mnemonicParsing="false" text="Ouvrir" />
-                  <MenuItem mnemonicParsing="false" text="Sauvegarder" />
-                  <MenuItem mnemonicParsing="false" text="Sauvegarder sous..." />
-                  <MenuItem mnemonicParsing="false" text="Quitter" />
+              <MenuItem mnemonicParsing="false" onAction="#newAction" text="Nouveau" />
+                  <MenuItem mnemonicParsing="false" onAction="#openAction" text="Ouvrir" />
+                  <MenuItem mnemonicParsing="false" onAction="#saveAction" text="Sauvegarder" />
+                  <MenuItem mnemonicParsing="false" onAction="#saveAsAction" text="Sauvegarder sous..." />
+                  <MenuItem mnemonicParsing="false" onAction="#exitAction" text="Quitter" />
             </items>
           </Menu>
         </menus>

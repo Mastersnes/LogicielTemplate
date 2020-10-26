@@ -3,6 +3,7 @@ package com.ititi.template.models.dao;
 import com.ititi.template.models.beans.Personne;
 import com.ititi.template.models.dto.PersonneDto;
 import com.ititi.template.models.dto.PersonnesDto;
+import com.ititi.template.utils.Global;
 import com.ititi.template.utils.PreferencesUtils;
 import javafx.scene.control.Alert;
 import org.apache.commons.lang3.StringUtils;
@@ -31,6 +32,7 @@ public class Fdd {
     protected static Fdd instance;
     protected Logger logger = Logger.getLogger(getClass().getName());
     protected File currentFile;
+    protected boolean modification;
 
     private Fdd() {
     }
@@ -53,7 +55,7 @@ public class Fdd {
                 final PersonnesDto personnes = (PersonnesDto) um.unmarshal(file);
 
                 PreferencesUtils.saveLastFile(file);
-                currentFile = file;
+                setCurrentFile(file);
                 if (personnes != null) return personnes.getPersonnes();
             } catch (final JAXBException e) {
                 final Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -77,6 +79,8 @@ public class Fdd {
 
             m.marshal(personnes, file);
             PreferencesUtils.saveLastFile(file);
+            setCurrentFile(file);
+            setModification(false);
         } catch (final JAXBException e) {
             final Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
@@ -86,10 +90,18 @@ public class Fdd {
     }
 
     public String getCurrentFileName() {
-        if (currentFile != null) return currentFile.getPath();
+        if (currentFile != null) return currentFile.getName();
         else return StringUtils.EMPTY;
     }
+
+    public File getCurrentFile() {return currentFile;}
     public void setCurrentFile(final File currentFile) {
         this.currentFile = currentFile;
     }
+
+    public void setModification(boolean modification) {
+        this.modification = modification;
+        Global.mainApp.refreshName();
+    }
+    public boolean isModification() {return modification;}
 }

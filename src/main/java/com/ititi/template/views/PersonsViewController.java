@@ -1,6 +1,7 @@
 package com.ititi.template.views;
 
 import com.ititi.template.models.beans.Personne;
+import com.ititi.template.models.dao.Fdd;
 import com.ititi.template.utils.DateUtils;
 import com.ititi.template.utils.Global;
 import javafx.fxml.FXML;
@@ -72,6 +73,7 @@ public class PersonsViewController extends AbstractController<AnchorPane> {
     }
 
     public void showPerson(final Personne personne) {
+        personneTable.getSelectionModel().select(personne);
         if (personne != null) {
             deleteButton.setDisable(false);
             editButton.setDisable(false);
