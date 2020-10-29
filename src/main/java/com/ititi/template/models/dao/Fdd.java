@@ -1,18 +1,11 @@
 package com.ititi.template.models.dao;
 
 import com.ititi.template.models.beans.Personne;
-import com.ititi.template.models.dto.PersonneDto;
 import com.ititi.template.models.dto.PersonnesDto;
 import com.ititi.template.utils.Global;
 import com.ititi.template.utils.PreferencesUtils;
 import javafx.scene.control.Alert;
 import org.apache.commons.lang3.StringUtils;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -21,8 +14,6 @@ import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**

@@ -2,11 +2,8 @@ package com.ititi.template.models.dto;
 
 import com.ititi.template.models.beans.Personne;
 
-import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

@@ -2,7 +2,6 @@ package com.ititi.template.views;
 
 import com.ititi.template.models.dao.Fdd;
 import com.ititi.template.utils.Global;
-import com.sun.xml.bind.v2.schemagen.xmlschema.ExtensionType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -11,7 +10,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.sql.BatchUpdateException;
 import java.util.Optional;
 
 /**

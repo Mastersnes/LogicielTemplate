@@ -3,7 +3,6 @@ package com.ititi.template.views;
 import com.ititi.template.models.beans.Personne;
 import com.ititi.template.models.dao.Fdd;
 import com.ititi.template.utils.DateUtils;
-import com.ititi.template.utils.Global;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
